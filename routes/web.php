@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::group(['middleware' => 'auth'], function(){
   Route::get('video_chat', 'VideoChatController@index');
   Route::post('auth/video_chat', 'VideoChatController@auth');
