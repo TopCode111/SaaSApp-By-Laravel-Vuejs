@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Pusher\Pusher;
 
-///
 class VideoChatController extends Controller
 {
     public function index(Request $request) {
