@@ -1,4 +1,4 @@
-// VideoChat.vue
+
 <template>
   <div class="container">
     <h1 class="text-center">Laravel Video Chat</h1>
@@ -30,7 +30,7 @@ export default {
     startVideoChat(userId) {
       this.getPeer(userId, true);
     },
-    // Inside getPeer function, create a new WebRTC peer connection and set the basic methods such as signal, stream and close.
+    
     getPeer(userId, initiator) {
       if(this.peers[userId] === undefined) {
         let peer = new Peer({
@@ -38,7 +38,7 @@ export default {
           stream: this.stream,
           trickle: false
         });
-        //Bind the channel client-signal-${this.user.id} to receive an event to you.
+        
         peer.on('signal', (data) => {
           this.channel.trigger(`client-signal-${userId}`, {
             userId: this.user.id,
@@ -64,11 +64,11 @@ export default {
       // To show pusher errors
       // Pusher.logToConsole = true;
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-      //Access the devices using navigator.mediaDevices.getUserMedia.
+      
       const videoHere = this.$refs['video-here'];
       videoHere.srcObject = stream;
       this.stream = stream;
-      //Call getPusherInstance to instantiate Pusher instance. We’re passing ‘X-CSRF-Token’ in the headers to authenticate.
+      
       const pusher = this.getPusherInstance();
       this.channel = pusher.subscribe('presence-video-chat');
       this.channel.bind(`client-signal-${this.user.id}`, (signal) => 

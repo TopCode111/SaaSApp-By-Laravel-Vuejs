@@ -16,6 +16,7 @@ class VideoChatController extends Controller
         ]);
     }
     
+    
     public function auth(Request $request) {
         $user = $request->user();
         $socket_id = $request->socket_id;
