@@ -89,6 +89,10 @@ export default {
       });
     }
   }
+  mounted : function(){
+    console.log('Video chat room loading...')
+    this.getAccessToken()
+  }
 };
 </script>
 <style>
